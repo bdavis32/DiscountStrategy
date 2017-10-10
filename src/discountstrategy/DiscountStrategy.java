@@ -9,7 +9,7 @@ package discountstrategy;
  *
  * @author Benjamin
  */
-public interface Discount {
+public interface DiscountStrategy {
 
     public abstract double getDiscountAmount(double unitCost, double quantity);
     

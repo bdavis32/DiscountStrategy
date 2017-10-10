@@ -9,7 +9,7 @@ package discountstrategy;
  *
  * @author Benjamin
  */
-public class PercentOffDiscount implements Discount {
+public class PercentOffDiscount implements DiscountStrategy {
     private double percentOff;
     private double unitCost;
     private double quantity;
@@ -41,6 +41,6 @@ public class PercentOffDiscount implements Discount {
 //    public static void main(String[] args) {
 //        PercentOffDiscount discount = new PercentOffDiscount(.1);
 //        double amt = discount.getDiscountAmount(20,2);
-//        System.out.println("Discount should be $4\nDiscount is: " + amt);
+//        System.out.println("DiscountStrategy should be $4\nDiscount is: " + amt);
 //    }
 }
