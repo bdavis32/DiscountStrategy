@@ -9,19 +9,14 @@ package discountstrategy;
  *
  * @author Benjamin
  */
-public class PercentOffDiscount implements DiscountStrategy {
+public class PercentOffDiscount implements Discount {
     private double percentOff;
-    private double unitCost;
-    private double quantity;
 
     public PercentOffDiscount(double percentOff) {
-        this.percentOff = percentOff;
+        setPercentOff(percentOff);
     }
-    
-    
-    
     @Override
-    public final/* REMEMBER TO DECLARE CONCRETE METHODS FINAL!!! */ double getDiscountAmount(double unitCost, double quantity){
+    public final double getDiscountAmt(double unitCost, double quantity){
         return unitCost * quantity * percentOff;
     }
 
@@ -29,18 +24,19 @@ public class PercentOffDiscount implements DiscountStrategy {
         return percentOff;
     }
 
-    public final void setPercentOff(double percentOff) {
+    public final/* CONCRETE METHODS MUST BE DECLARED FINAL!!! */ void setPercentOff(double percentOff) {
         if(percentOff < 0){
-            /* VALIDATION LOGIC IS REQUIRED!!! */
+            // VALIDATION LOGIC IS REQUIRED!!!
             throw new IllegalArgumentException("Cannot pass in a negative percent");
+        } else {
+            this.percentOff = percentOff;
         }
-        this.percentOff = percentOff;
     }
  
 //    //Test this class with a main method
 //    public static void main(String[] args) {
 //        PercentOffDiscount discount = new PercentOffDiscount(.1);
-//        double amt = discount.getDiscountAmount(20,2);
-//        System.out.println("DiscountStrategy should be $4\nDiscount is: " + amt);
+//        double amt = discount.getDiscountAmt(20,2);
+//        System.out.println("Discount should be $4\nDiscount is: " + amt);
 //    }
 }
