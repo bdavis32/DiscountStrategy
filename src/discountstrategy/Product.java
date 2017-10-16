@@ -10,10 +10,10 @@ public class Product {
     private Discount discount;
 
     public Product(String prodId, String prodName, double unitCost, Discount discount) {
-        this.prodId = prodId;
-        this.prodName = prodName;
-        this.unitCost = unitCost;
-        this.discount = discount;
+        setProdId(prodId);
+        setProdName(prodName);
+        setUnitCost(unitCost);
+        setDiscount(discount);
     }
 
     public final double getDiscountAmt(double qty){
@@ -25,6 +25,9 @@ public class Product {
     }
 
     public final void setProdId(String prodId) {
+        if(prodId == null || prodId.isEmpty() || prodId.length() == 0){
+            throw new IllegalArgumentException("Cannot have an empty string.");
+        }
         this.prodId = prodId;
     }
 
@@ -33,6 +36,9 @@ public class Product {
     }
 
     public final void setProdName(String prodName) {
+        if(prodName == null || prodName.isEmpty() || prodName.length() == 0){
+            throw new IllegalArgumentException("Cannot have an empty prodName.");
+        }
         this.prodName = prodName;
     }
 
@@ -41,6 +47,9 @@ public class Product {
     }
 
     public final void setUnitCost(double unitCost) {
+        if(unitCost <= 0){
+            throw new IllegalArgumentException("Cannot have a zero or negative unitCost");
+        }        
         this.unitCost = unitCost;
     }
 
@@ -49,6 +58,9 @@ public class Product {
     }
 
     public final void setDiscount(Discount discount) {
+        if(discount == null){
+            throw new IllegalArgumentException("Cannot have a null discount.");
+        }
         this.discount = discount;
     }
     
