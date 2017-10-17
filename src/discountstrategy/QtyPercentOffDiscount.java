@@ -10,20 +10,20 @@ public class QtyPercentOffDiscount implements Discount {
     private double minQty;
 
     public QtyPercentOffDiscount(double percentOff, double minQty) {
-        setPercentOff(percentOff);
+        setPercentOff(percentOff); //Call the setter methods instead of using the "this" keyword
         setMinQty(minQty);
     }
 
     @Override
     public final double getDiscountAmt(double unitCost, double quantity) {
-        //Sentinel value
-        double discountAmt = 0;
-        
-        if (quantity >= minQty) {
-            discountAmt = unitCost * quantity * percentOff;
-        }
-        return discountAmt;
-//        return (quantity >= minQty) ? (unitCost * quantity * percentOff) : 0;
+//        //Sentinel value
+//        double discountAmt = 0;
+//        
+//        if (quantity >= minQty) {
+//            discountAmt = unitCost * quantity * percentOff;
+//        }
+//        return discountAmt;
+        return (quantity >= minQty) ? (unitCost * quantity * percentOff) : 0;
     }
 
     public final double getPercentOff() {
