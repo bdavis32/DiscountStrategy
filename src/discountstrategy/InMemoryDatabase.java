@@ -1,5 +1,7 @@
 package discountstrategy;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Benjamin
@@ -16,6 +18,41 @@ public class InMemoryDatabase implements ReceiptDataAccessStrategy{
         new Product("B205", "Men's Dress Shirt", 35.50, new PercentOffDiscount(0.15)),
         new Product("C222", "Women's Socks    ", 9.50, new NoDiscount())
     };
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Arrays.deepHashCode(this.customers);
+        hash = 97 * hash + Arrays.deepHashCode(this.products);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final InMemoryDatabase other = (InMemoryDatabase) obj;
+        if (!Arrays.deepEquals(this.customers, other.customers)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.products, other.products)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "InMemoryDatabase{" + "customers=" + customers + ", products=" + products + '}';
+    }
+    
     
     /**
      * Tries to find a Customer by customer id.
@@ -40,6 +77,7 @@ public class InMemoryDatabase implements ReceiptDataAccessStrategy{
         
         return customer;
     }
+    
     
     /**
      * Tries to find a Product by product id.

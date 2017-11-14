@@ -1,7 +1,7 @@
 package discountstrategy;
 
 /**
- *
+ * 
  * @author Benjamin
  */
 public class PercentOffDiscount implements Discount {
@@ -10,6 +10,7 @@ public class PercentOffDiscount implements Discount {
     public PercentOffDiscount(double percentOff) {
         setPercentOff(percentOff);
     }
+    
     @Override
     public final double getDiscountAmt(double unitCost, double quantity){
         return unitCost * quantity * percentOff;
